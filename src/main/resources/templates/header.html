@@ -35,7 +35,7 @@
 
         &nbsp;
 
-        <a th:href="@{/bookPage.html}">Book Managment</a>
+        <a th:if="${#response.getHeader('role') == 'ADMIN'}" th:href="@{/bookPage}">Book Management</a>
 
     </div>
 

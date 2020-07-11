@@ -22,30 +22,38 @@ public class BookController {
         return "redirect:/home";
     }
 
-    @GetMapping("/find")
-    public String find(Model model, @RequestParam String isbn) {
-        Book book = bookService.find(isbn);
+    @GetMapping("/findByIsbn")
+    public String findByIsbn(Model model, @RequestParam("isbn") String isbn) {
+        Book book = bookService.findByIsbn(isbn);
         model.addAttribute("book", book);
         return "bookUpdate";
     }
 
-    @PostMapping("/update")
+    @PostMapping(value = "/update", params = "action=Update")
     public String update(Model model, @ModelAttribute Book book) {
+        System.out.println("update");
         bookService.update(book);
         return "bookUpdate";
     }
 
-    @PostMapping("/delete")
+    @PostMapping(value = "/update", params = "action=Delete")
     public String delete(@ModelAttribute Book book) {
+        System.out.println("delete");
         bookService.delete(book.getIsbn());
         return "redirect:/home";
     }
 
     @GetMapping("/findDelete")
     public String findDelete(Model model, @RequestParam String isbn) {
-        Book book = bookService.find(isbn);
+        Book book = bookService.findByIsbn(isbn);
         model.addAttribute("book", book);
         return "bookDelete";
     }
 
+    @GetMapping(value = "/view")
+    public String view(Model model, @RequestParam("isbn") String isbn){
+        Book book = bookService.findByIsbn(isbn);
+        model.addAttribute("book", book);
+        return "bookView";
+    }
 }

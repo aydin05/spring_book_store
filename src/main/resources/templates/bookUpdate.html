@@ -19,7 +19,7 @@
 
 <h2 class="center">Book Update</h2>
 
-<form th:action="@{/book/find}" method="get" class="center">
+<form th:action="@{/book/findByIsbn}" method="get" class="center">
     <p>Isbn:   <input th:name="isbn"/> </p>
     <td class="center">
         <input type="submit" value="Search"/>
@@ -56,7 +56,8 @@
         <tr>
             <td>&nbsp;</td>
             <td class="center">
-                <input type="submit" value="Update"/>
+                <input type="submit" name="action" value="Delete">
+                <input type="submit" name="action" value="Update"/>
                 <input type="reset" value="Reset"/>
             </td>
             <td>&nbsp;</td>

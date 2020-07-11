@@ -11,7 +11,7 @@ public interface BookService {
 
     Book find(long id);
 
-    Book find(String isbn);
+    Book findByIsbn(String isbn);
 
     Response update(Book book);
 
